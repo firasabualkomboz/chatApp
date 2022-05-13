@@ -7,14 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class conversations extends Model
+class Conversation extends Model
 {
     use HasFactory;
-    protected $fillable = ['user_id','lable','last_message_id'];
+    protected $fillable = ['user_id','lable','type','last_message_id'];
+    public $table = "conversation";
 
     public function participants() //many to manu
     {
-        return $this->belongsToMany(Usrecipientser::class,'participants')->withPivot(['joined_at','role']);
+        return $this->belongsToMany(User::class,'participants')->withPivot(['joined_at','role']);
     }
 
     public function messages()

@@ -13,7 +13,7 @@ class AddLastMessageIdToConversationsTable extends Migration
      */
     public function up()
     {
-        Schema::table('conversations', function (Blueprint $table) {
+        Schema::table('conversation', function (Blueprint $table) {
 
             $table->foreignId('last_message_id')->nullable()->constrained('messages')->nullOnDelete();
 
@@ -27,7 +27,7 @@ class AddLastMessageIdToConversationsTable extends Migration
      */
     public function down()
     {
-        Schema::table('conversations', function (Blueprint $table) {
+        Schema::table('conversation', function (Blueprint $table) {
             $table->dropConstrainedForeignId('last_messsage_id');
         });
     }

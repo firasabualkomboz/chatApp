@@ -17,11 +17,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// Auth::routes();
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
 
-// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Route::post('/save-token', [App\Http\Controllers\HomeController::class, 'saveToken'])->name('save-token');
-Route::post('/send-notification', [App\Http\Controllers\HomeController::class, 'sendNotification'])->name('send.notification');
-
-Route::get('/fcm',[App\Http\Controllers\Controller::class, 'index']);
+require __DIR__.'/auth.php';
